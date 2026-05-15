@@ -14,7 +14,7 @@ const app = {
     return;
   }
     const customer = auth.getCustomer();
-    document.querySelector('h1').textContent = `Welcome, ${customer.name}!`;
+    document.querySelector('h1').textContent = `Welcome, ${customer.name} | CoffeeScript Caf&eacute;`;
     this.setupEventListeners();
   },
 
