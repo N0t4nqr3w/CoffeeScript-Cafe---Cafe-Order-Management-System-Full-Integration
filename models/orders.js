@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const orderSchema = new mongoose.Schema({
     baristaId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Baristas",
+        ref: "Users",
         required: true
     },
 
@@ -27,7 +27,7 @@ const orderSchema = new mongoose.Schema({
 
     createdBy: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Customer",
+        ref: "Users",
         required: true
     }
 });

@@ -71,6 +71,40 @@ export const api = {
       method: 'DELETE',
       headers: authHeaders(),
     }),
+
+    // Users
+  getUsers: () =>
+    fetchJSON(`${API_URL}/user`, {
+      headers: authHeaders(),
+    }),
+
+  getCustomers: () =>
+    fetch(`${API_URL}/user?type=customer`, {
+      headers: authHeaders(),
+    }),
+
+  getStaff: () =>
+    fetch(`${API_URL}/user?type=staff`, {
+      headers: authHeaders(),
+    }),
+
+  updateUser: (id, updates) =>
+    fetchJSON(`${API_URL}/user/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        ...authHeaders(),
+      },
+      body: JSON.stringify(updates),
+    }),
+
+  deleteUser: id =>
+    fetchJSON(`${API_URL}/user/${id}`, {
+      method: 'DELETE',
+      headers: authHeaders(),
+    }),
+
+  // Orders
   createOrder: id => fetchJSON(`${API_URL}/orders`, {
     method: 'POST', 
     headers: {'Content-Type': 'application/json', ...authHeaders()},

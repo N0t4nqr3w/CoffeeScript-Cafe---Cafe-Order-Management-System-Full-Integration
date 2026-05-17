@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | CoffeeScript Caf&eacute;</title>
+    <script type="module" src="./scripts/login.js"></script>
 </head>
 <body>
     <h1>CoffeeScript Caf&eacute;</h1>
@@ -11,15 +12,15 @@
     <form>
         <fieldset style="border: none">
             <label>Email</label>
-            <input type="text">
+            <input type="text" id="email-input">
         </fieldset>
 
         <fieldset style="border:none">
             <label>Password</label>
-            <input type="text">
+            <input type="text" id="password-input">
         </fieldset>
         <p id="message"></p>
-        <button type="submit">Login</button>
+        <button type="submit" id="login-btn">Login</button>
         <p>Don't have an account? <a href="./pages/register.html">Register</a> now!</p>
         <a href="./pages/orders.html">Orders page</a>
     </form>

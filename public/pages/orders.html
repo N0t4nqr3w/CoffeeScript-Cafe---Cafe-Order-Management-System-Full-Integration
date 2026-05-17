@@ -1,64 +1,51 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="text/javascript" src="./routes/orders.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoffeeScript Café - Place Order</title>
+    
+    <link rel="stylesheet" href="../styles/styles.css">
 </head>
-
 <body>
-    <label for="itemAmount">
-    </label>
-    <form action="/orders" method="POST">
-        <input type="hidden" name="baristaId" value="B123">
-        <input type="hidden" name="status" value="pending">
-        <input type="hidden" name="createdBy" value="Customer">
 
-        <div id="selectContainer">
-            <!-- Dynamic selects will be injected here -->
-        </div>
-        <button type="submit">submit</button>
-    </form>
-    <br>
+    <header class="cafe-header">
+        <h1>CoffeeScript Café</h1>
+    </header>
 
-    <script>
+    <div class="container">
         
-        
-        const menuOptions = [
-            { id: "65001", name: "Espresso" },
-            { id: "65002", name: "Latte" },
-            { id: "65003", name: "Cappuccino" },
-            { id: "65004", name: "Croissant" }
-        ];
+        <main>
+            <h2>Menu Options</h2>
+            <div class="menu-grid" id="menuGrid"></div>
+        </main>
 
-        function generateSelects() {
-            const amount = document.getElementById('itemAmount').value;
-            const container = document.getElementById('selectContainer');
-            const submitBtn = document.getElementById('submitBtn');
+        
+        <aside class="cart-panel">
+            <h2>Your Order</h2>
+            <div id="cartItems">
+                <p class="empty-message">Your cart is empty.</p>
+            </div>
+
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="totalPrice">$0.00</span>
+            </div>
+
             
-            container.innerHTML = ''; // Clear previous fields
-
-            if (amount > 0) {
-                submitBtn.style.display = 'block'; // Show submit button
-            }
-
-            for (let i = 0; i < amount; i++) {
-                const div = document.createElement('div');
-                div.className = 'item-row';
+            <form action="/orders" method="POST" id="orderForm">
                 
-                div.innerHTML = `
-                    <label>Item ${i + 1}: </label>
-                    <select name="itemIds" required>
-                        <option value="">-- Choose an Item --</option>
-                        ${menuOptions.map(opt => `<option value="${opt.id}">${opt.name}</option>`).join('')}
-                    </select>
-                `;
-                
-                container.appendChild(div);
-            }
-        }
-    </script>
+                <input type="hidden" name="baristaId" value="65f1a2b3c4d5e6f7a8b90123">
+                <input type="hidden" name="createdBy" value="65f2b3c4d5e6f7a8b901234c">
+                <input type="hidden" name="status" value="In Progress">
+
+                <div id="hiddenInputsContainer"></div>
+
+                <button type="submit" class="btn-submit" id="submitBtn">Place Order</button>
+            </form>
+        </aside>
+    </div>
+
+    <script src="../scripts/api.js"></script>
 </body>
-
 </html>

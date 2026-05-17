@@ -4,9 +4,8 @@ import dotenv from "dotenv";
 import cors from "cors";
 
 import {router as ordersRoutes} from "./routes/orders.js";
-import {router as customersRoutes} from "./routes/customers.js";
 import {router as menuItemsRoutes} from "./routes/menuItems.js";
-import {router as baristaRoutes} from "./routes/baristas.js";
+import {router as userRoutes} from "./routes/users.js";
 import {router as authRoutes} from "./routes/auth.js";
 
 //Load config values
@@ -33,9 +32,8 @@ app.use(express.json());
 
 //Mount routes
 app.use("/api/orders",ordersRoutes);
-app.use("/api/customers", customersRoutes);
 app.use("/api/menu", menuItemsRoutes);
-app.use("/api/baristas", baristaRoutes);
+app.use("/api/user", userRoutes);
 app.use("/api/auth",authRoutes);
 
 //Error handling

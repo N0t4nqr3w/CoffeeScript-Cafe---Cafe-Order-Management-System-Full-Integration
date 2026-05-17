@@ -1,7 +1,6 @@
 import express from "express";
 import Order from "../models/orders.js"
 import menuItems from "../models/menuItems.js";
-import customer from "../models/customer.js";
 import orders from "../models/orders.js";
 
 export const router = express.Router();
@@ -79,7 +78,8 @@ router.post("/", async (req,res)=>{
         });
         
         await order.save();
-
+        console.log(order.itemIds);
+        
         res.json(order)
     }
     catch(err){
@@ -142,3 +142,4 @@ async function calculatePrice(itemIds) {
 
     return price;
 }
+

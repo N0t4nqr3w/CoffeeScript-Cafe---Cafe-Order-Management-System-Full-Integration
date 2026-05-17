@@ -13,18 +13,18 @@ const app = {
     window.location.replace('../index.html');
     return;
   }
-    const customer = auth.getCustomer();
-    document.querySelector('h1').textContent = `Welcome, ${customer.name} | CoffeeScript Caf&eacute;`;
+    const customer = auth.getUser();
+    document.querySelector('h1').innerHTML = `Welcome, ${customer.name} | CoffeeScript Caf&eacute;`;
     this.setupEventListeners();
   },
 
   setupEventListeners() {
     this.elements.menuBtn.addEventListener('click', () => {
-      window.location.replace('./menuItems.html');
+        window.location.href = ("../pages/menu.html");
     });
 
     this.elements.startOrderBtn.addEventListener('click', () => {
-        window.location.replace('./orders.html');
+        window.location.href = ("../pages/orders.html");
     });
 
     this.elements.logoutBtn.addEventListener('click', () => {

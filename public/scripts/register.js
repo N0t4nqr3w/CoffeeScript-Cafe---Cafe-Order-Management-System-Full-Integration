@@ -15,13 +15,12 @@ register_btn.addEventListener('click', e => {
 });
 
 async function submit_form() {
-    const t = select_type.value || '';
     const data = {
         email: email_input.value || '',
         password: password_input.value || '',
         name: name_input.value || '',
         phone: phone_input.value || '',
-        type: t
+        type: select_type.value || ''
         
     };
     register_err.textContent = '';

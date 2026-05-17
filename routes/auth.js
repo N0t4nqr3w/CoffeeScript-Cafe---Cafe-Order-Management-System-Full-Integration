@@ -1,8 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
-import Customer from "../models/customer.js";
-import Baristas from "../models/baristas.js"
+import Users from "../models/users.js"
 
 export const router = express.Router();
 
@@ -13,14 +12,8 @@ router.post("/register", async(req,res) => {
     try {
         const {email,password,name,phone,type} = req.body;
 
-        if(type=="Customer") {
-            const customer = new Customer({email,password,name,phone});
-            await customer.save(session);
-        } else if(type=="Staff") {
-            const barista = new Baristas({email,password,name,phone});
-            await barista.save(session);
-        }
-
+        const user = new Users({email,password,name,phone,type});
+        await user.save(session);
         await session.commitTransaction();
 
          res.status(201).json({message: `${type} account created successfully`});
@@ -33,6 +26,56 @@ router.post("/register", async(req,res) => {
 });
 
 
-// router.post("/login", async(req,res) => {
+router.post("/login", async(req,res) => {
+    try {
+        const {email, password} = req.body;
 
-// });
+        if (!email || !password) {
+            return res.status(401).json({
+                error: "Missing email and/or password",
+            });
+        }
+
+        // Find user by email
+        const user = await Users.findOne({ email });
+        if (!user) {
+            return res.status(401).json({
+                error: "Invalid username or password",
+            });
+        }
+
+        // TODO: Compare passwords using bcrypt
+        //const isMatch = await user.comparePassword(password);
+        const isMatch = user.password === password;
+        if (!isMatch) {
+            return res.status(401).json({
+                error: "Invalid username or password",
+            });
+        }
+
+        // Create token
+        const payload = {
+            id: user._id,
+            email: user.email
+        };
+    
+        const token = jwt.sign(payload, process.env.JWT_SECRET, {
+            expiresIn: "24h"
+        })
+    
+        // Login successful! - Return token to client
+        res.json({
+            message: "Login successful",
+            token: token,
+            user: {
+            id: user._id,
+            email: user.email,
+            type: user.type,
+            name: user.name
+            }
+        });
+
+    } catch(err) {
+        res.status(500).json({ error: err.message });
+    }
+});
