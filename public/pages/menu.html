@@ -5,12 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu | CoffeeScript Caf&eacute;</title>
     <script type="module" src="../scripts/menu.js"></script>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/menuItems.css">
 </head>
 <body>
     <header>
-        <h1>Menu | CoffeeScript Caf&eacute;</h1>
+        <div class="cafe-header">
+            <h1>CoffeeScript Caf&eacute</h1>
+            <button id="return-btn" class="dark-btn btn1">Dashboard</button>
+        </div>
     </header>
-    <main>
+    <main class="container menu-page">
+        
+        <button id="add-btn" class="btn-add hidden">Add Menu Item</button>
+        <div id="new-item" class="form-panel hidden">
+            <form>
+                <fieldset>
+                    <label>Name</label>
+                    <input type="text" id="name-input">
+                </fieldset>
+                <fieldset>
+                    <label>Category</label>
+                    <select id="select-category">
+                        <option>Hot Drink</option>
+                        <option>Cold Drink</option>
+                        <option>Hot Food</option>
+                        <option>Cold Food</option>
+                        <option>Other</option>
+                    </select>
+                </fieldset>
+                <fieldset>
+                    <label>Description</label>
+                    <textarea id="description-input"></textarea>
+                </fieldset>
+                <fieldset>
+                    <label>Price (in cents)</label>
+                    <input type="number" id="price-input" min="0">
+                </fieldset>
+                <fieldset>
+                    <label>Ingredients (separate items by comma)</label>
+                    <input type="text" id="ingredient-input">
+                </fieldset>
+                <p id="menu-err"></p>
+                <input type="submit" value="Confirm" id="confirm-btn" class="confirm-btn">
+            </form>
+        </div>
+        <p id="message"></p>
+
+        <div class="filter-panel">
+            <input type="text" id="search-input" placeholder="Search for menu items...">
+
+            <select id="filter-category">
+                <option value=''>All</option>
+                <option>Hot Drink</option>
+                <option>Cold Drink</option>
+                <option>Hot Food</option>
+                <option>Cold Food</option>
+                <option>Other</option>
+            </select>
+
+            <button id="search-btn" class="btn-add">Search</button>
+        </div>
+
         <ul id="menu-list"></ul>
     </main>
 </body>

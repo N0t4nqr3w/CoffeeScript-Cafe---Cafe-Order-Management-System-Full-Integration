@@ -36,13 +36,18 @@ export const api = {
   login: (email, password) =>
     fetchJSON(`${API_URL}/auth/login`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json'},
       body: JSON.stringify({ email, password }),
     }),
 
   // Menu Items
-  getMenuItems: () =>
-    fetchJSON(`${API_URL}/menu`, {
+  getMenuItems: (query='') =>
+    fetchJSON(`${API_URL}/menu${query}`, {
+      headers: authHeaders(),
+    }),
+  
+  getMenuItemByName: itemName =>
+    fetchJSON(`${API_URL}/menu/${itemName}`, {
       headers: authHeaders(),
     }),
 
@@ -79,12 +84,12 @@ export const api = {
     }),
 
   getCustomers: () =>
-    fetch(`${API_URL}/user?type=customer`, {
+    fetchJSON(`${API_URL}/user?type=customer`, {
       headers: authHeaders(),
     }),
 
   getStaff: () =>
-    fetch(`${API_URL}/user?type=staff`, {
+    fetchJSON(`${API_URL}/user?type=staff`, {
       headers: authHeaders(),
     }),
 
@@ -105,8 +110,10 @@ export const api = {
     }),
 
   // Orders
-  createOrder: id => fetchJSON(`${API_URL}/orders`, {
+  createOrder: orderData =>
+    fetchJSON(`${API_URL}/orders`, {
     method: 'POST', 
     headers: {'Content-Type': 'application/json', ...authHeaders()},
+    body: JSON.stringify(orderData),
   })
 };

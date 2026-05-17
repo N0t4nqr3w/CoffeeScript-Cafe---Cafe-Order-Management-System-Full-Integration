@@ -5,24 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | CoffeeScript Caf&eacute;</title>
     <script type="module" src="./scripts/login.js"></script>
+    <link rel="stylesheet" href="./styles/styles.css">
 </head>
-<body>
+<body class="auth-page">
     <h1>CoffeeScript Caf&eacute;</h1>
-    <h2>Login</h2>
-    <form>
-        <fieldset style="border: none">
-            <label>Email</label>
-            <input type="text" id="email-input">
-        </fieldset>
+    <div class="auth-panel">
+        <h2>Login</h2>
+        <form>
+            <fieldset>
+                <label>Email</label>
+                <input type="text" id="email-input">
+            </fieldset>
 
-        <fieldset style="border:none">
-            <label>Password</label>
-            <input type="text" id="password-input">
-        </fieldset>
-        <p id="message"></p>
-        <button type="submit" id="login-btn">Login</button>
-        <p>Don't have an account? <a href="./pages/register.html">Register</a> now!</p>
-        <a href="./pages/orders.html">Orders page</a>
-    </form>
+            <fieldset>
+                <label>Password</label>
+                <input type="password" id="password-input" minlength="8" required>
+            </fieldset>
+            <p id="message"></p>
+            <input type="submit" id="login-btn" class="light-btn btn2"value="Login">
+            <p>Don't have an account? <a href="./pages/register.html">Register</a> now!</p>
+        </form>
+    </div>
 </body>
 </html>

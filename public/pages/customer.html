@@ -1,19 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Customer | CoffeeScript Caf&eacute;</title>
-  <script type="module" src="../scripts/customer.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | CoffeeScript Caf&eacute;</title>
+    <script type="module" src="../scripts/customer.js"></script>
+    <link rel="stylesheet" href="../styles/styles.css">
 </head>
 <body>
+  <header>
+    <div class="cafe-header">
+      <h1>CoffeeScript Caf&eacute;</h1>
+      <button id="logoutBtn" class="dark-btn btn1">Logout</button>
+    </div>
+  </header>
   <main>
-    <header>
-      <h1>Customer | CoffeeScript Caf&eacute;</h1>
-    </header>
-    <button id = "menuBtn">Menu</button>
-    <button id = "startOrderBtn">Start Order</button>
-    <button id = "logoutBtn">Logout</button>
+    <div class="welcome-panel">
+        <h2>Customer Dashboard</h2>
+        <p id="welcome-msg">Welcome, </p>
+    </div>
+    <div class="dashboard-grid">
+        <button id = "menuBtn" class="dashboard-card">
+            <h2>View Menu</h2>
+            <p>View, filter, and search through menu items.</p>
+        </button>
+        <button id = "startOrderBtn" class="dashboard-card">
+            <h2>Start Order</h2>
+            <p>Add menu items to your cart and check out.</p>
+        </button>
+    </div>
   </main>
 </body>
 </html>

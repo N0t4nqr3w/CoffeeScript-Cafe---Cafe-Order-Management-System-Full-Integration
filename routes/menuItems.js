@@ -1,5 +1,6 @@
 import express from "express";
 import MenuItems from "../models/menuItems.js";
+import { authenticateToken } from "../middleware/auth.js";
 
 export const router = express.Router();
 
@@ -54,7 +55,17 @@ router.get("/", async(req, res) => {
     }
 });
 
-router.post("/", async(req, res) => {
+router.get("/:name", async(req, res) => {
+    try{
+        const item = await MenuItems.findOne({name: req.params.name})
+        res.json(item);
+    }
+    catch(err){
+        res.status(500).json({error: err.message});
+    }
+});
+
+router.post("/", authenticateToken, async(req, res) => {
     try{
         const menuItem = new MenuItems(req.body);
         await menuItem.save();
@@ -65,7 +76,7 @@ router.post("/", async(req, res) => {
     }
 });
 
-router.put("/:id", async(req, res) => {
+router.put("/:id", authenticateToken, async(req, res) => {
     try{
         const menuItem = await MenuItems.findById(req.params.id);
         if(!menuItem){
@@ -98,7 +109,7 @@ router.put("/:id", async(req, res) => {
     }
 });
 
-router.delete("/:id", async(req, res) => {
+router.delete("/:id", authenticateToken, async(req, res) => {
     try{
         await MenuItems.findByIdAndDelete(req.params.id);
         res.status(204).send();

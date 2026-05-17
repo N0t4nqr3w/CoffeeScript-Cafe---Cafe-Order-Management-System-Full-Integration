@@ -44,9 +44,7 @@ router.post("/login", async(req,res) => {
             });
         }
 
-        // TODO: Compare passwords using bcrypt
-        //const isMatch = await user.comparePassword(password);
-        const isMatch = user.password === password;
+        const isMatch = await user.comparePassword(password);
         if (!isMatch) {
             return res.status(401).json({
                 error: "Invalid username or password",

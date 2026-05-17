@@ -2,6 +2,7 @@ import express from "express";
 import Order from "../models/orders.js"
 import menuItems from "../models/menuItems.js";
 import orders from "../models/orders.js";
+import { authenticateToken } from "../middleware/auth.js";
 
 export const router = express.Router();
 
@@ -63,7 +64,7 @@ router.get("/:id", async (req,res)=>{
     }
 });
 
-router.post("/", async (req,res)=>{
+router.post("/", authenticateToken, async (req,res)=>{
     try{
         const{itemIds,baristaId,status,createdBy} = req.body;
 
@@ -78,7 +79,6 @@ router.post("/", async (req,res)=>{
         });
         
         await order.save();
-        console.log(order.itemIds);
         
         res.json(order)
     }
@@ -87,7 +87,7 @@ router.post("/", async (req,res)=>{
     }
 });
 
-router.put("/:id", async (req,res)=>{
+router.put("/:id", authenticateToken, async (req,res)=>{
     try{
         const orderUpdate = await Order.findById(req.params.id);
         if(!orderUpdate){
@@ -123,7 +123,7 @@ router.put("/:id", async (req,res)=>{
 
 });
 
-router.delete("/:id", async (req,res)=>{
+router.delete("/:id", authenticateToken, async (req,res)=>{
     try{
         await Order.findByIdAndDelete(req.params.id);
         res.status(204).send();

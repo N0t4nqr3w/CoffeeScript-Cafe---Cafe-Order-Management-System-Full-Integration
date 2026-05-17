@@ -3,19 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Staff | CoffeeScript Caf&eacute;</title>
+    <title>Dashboard | CoffeeScript Caf&eacute;</title>
+    <script type="module" src="../scripts/staff.js"></script>
+    <link rel="stylesheet" href="../styles/styles.css">
 </head>
 <body>
-    <main>
-        <header>
-            <h1>Staff | CoffeeScript Caf&eacute;</h1>
-        </header>
-        <nav>
-            <button>Menu</button>
-            <button>Manage Customers</button>
-            <button>Manage Orders</button>
-            <button>Logout</button>
-        </nav>
-    </main>
+  <header>
+    <div class="cafe-header">
+      <h1>CoffeeScript Caf&eacute;</h1>
+      <button id="logoutBtn" class="dark-btn btn1">Logout</button>
+    </div>
+  </header>
+  <main>
+    <div class="welcome-panel">
+        <h2>Staff Dashboard</h2>
+        <p id="welcome-msg">Welcome, </p>
+    </div>
+    <div class="dashboard-grid">
+        <button id = "menuBtn" class="dashboard-card">
+            <h2>Update Menu</h2>
+            <p>View, edit, add, and delete menu items.</p>
+        </button>
+        <button id = "mngOrdersBtn" class="dashboard-card">
+            <h2>Manage Orders</h2>
+            <p>View orders assigned to you and update their status.</p>
+        </button>
+        <button id = "mngCustBtn" class="dashboard-card">
+            <h2>Manage Customer Accounts</h2>
+            <p>View, edit, and delete customer accounts.</p>
+        </button>
+    </div>
+  </main>
 </body>
 </html>

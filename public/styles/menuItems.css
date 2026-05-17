@@ -1,0 +1,102 @@
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--primary);
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--primary);
+    border-radius: 4px;
+    box-sizing: border-box;
+    font: inherit;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--primary);
+    border-radius: 4px;
+    box-sizing: border-box;
+    font: inherit;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--primary);
+    border-radius: 4px;
+    box-sizing: border-box;
+    font: inherit;
+}
+
+
+.confirm-btn {
+    width: 100px;
+    height: 30px;
+    background-color: white;
+    border: 1px solid var(--primary);
+
+}
+
+#confirm-btn {
+    height: 50px;
+}
+
+.confirm-btn:hover {
+    background-color: var(--lighter-bg);
+}
+
+
+.btn-add {
+    width: 200px;
+}
+
+@media (max-width: 599px) {
+    .btn-add{ width: 100px;}
+}
+
+#menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    display: grid;
+    gap: 20px;
+}
+
+.menu-page {
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+}
+
+.menu-card {
+    text-align: left;
+}
+
+
+
+.filter-panel {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 20px;
+    max-width: 700px;
+}
+
+.filter-panel input,
+.filter-panel select {
+    flex: 1;
+}
+
+.filter-panel button {
+    width: auto;
+    margin-bottom: 0;
+}
+
+.confirm-edit {
+    width: 120px;
+    height: 50px;
+}

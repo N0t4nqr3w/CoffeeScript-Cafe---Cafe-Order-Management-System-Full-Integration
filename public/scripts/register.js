@@ -5,12 +5,17 @@ const email_input = document.querySelector("#email-input");
 const password_input = document.querySelector("#password-input");
 const name_input = document.querySelector("#name-input");
 const phone_input = document.querySelector("#phone-input");
-const register_btn = document.querySelector("#register-btn");
+const register_form = document.querySelector("form");
 const select_type = document.querySelector("#select-type");
 const register_err = document.querySelector("#register-err");
 
-register_btn.addEventListener('click', e => {
+register_form.addEventListener('submit', e => {
     e.preventDefault();
+
+    if(!register_form.checkValidity()) {
+        register_form.reportValidity();
+        return;
+    }
     submit_form();
 });
 
@@ -27,8 +32,7 @@ async function submit_form() {
     try {
         await auth.register(data);
         window.location.replace("../index.html?registration=true");
-    } catch(err) {
-        console.log(err);
+    } catch(err) { 
         let message = err.message || 'Registration Failed';
 
         

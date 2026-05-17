@@ -3,6 +3,8 @@
             --accent: #c7a75c;
             --bg: #f7f5f0;
             --text: #2d2522;
+            --secdonary: #634635;
+            --lighter-bg: #fcfaf7;
         }
 
         body {
@@ -73,7 +75,7 @@
         }
 
         .btn-add:hover {
-            background-color: #634635;
+            background-color: var(--secdonary);
         }
 
         /* Order Summary / Cart Column */
@@ -121,4 +123,185 @@
 
         .btn-submit:hover {
             background-color: #219653;
+        }
+
+        .menu-toggle {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1rem;
+            cursor: pointer;
+        }   
+
+        .menu-toggle:hover {
+            background-color: var(--bg);
+        }
+
+        .form-panel {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary);
+            margin: 20px 0;
+            max-width: 700px;
+        }
+        .hidden {
+            display: none;
+        }
+
+        .strike {
+            text-decoration: line-through;
+        }
+
+        header {
+            margin-bottom: 20px;
+        }
+
+        .cafe-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap:20px;
+        }
+
+        .dark-btn {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .dark-btn:hover {
+            background-color: var(--secdonary);
+        }
+
+        .light-btn {
+            background-color: white;
+            border: 1px solid var(--primary);
+        }
+
+        .light-btn:hover {
+            background-color: var(--bg);
+        }
+
+        .btn1 {
+            width: 80px;
+            height: 40px;
+        }
+
+        .btn2 {
+            width: 120px;
+            height: 40px;
+        }
+
+        .welcome-panel h2 {
+            border:none;
+        }
+
+        .welcome-panel {
+            margin-bottom: 30px;
+        }
+
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            gap: 20px;
+        }
+
+        .dashboard-card {
+            background: white;
+            border: 1px solid var(--accent);
+            border-radius: 8px;
+            padding: 30px;
+            text-align: left;
+
+        }
+
+        .dashboard-card:hover {
+            background-color: var(--lighter-bg);
+        }
+
+        .dashboard-card h2 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+
+        .auth-page {
+            min-height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            padding-top: 60px;
+        }
+
+        .auth-panel {
+            background: white;
+            width: 100%;
+            max-width: 450px;
+            padding: 30px;
+            border-radius: 8px;
+            border-top: 4px solid var(--primary);
+        }
+
+        .auth-panel h2 {
+            margin-top: 0;
+        }
+
+        fieldset {
+            border:none;
+            margin-bottom: 15px;
+            padding: 0;
+        }
+
+        .auth-page h1 {
+            border: none;
+        }
+
+        .auth-page label {
+            display: block;
+            margin-bottom: 8px;
+
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .auth-page input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--primary);
+            border-radius: 4px;
+            box-sizing: border-box;
+            font: inherit;
+        }
+
+        #register-btn {
+            margin-top: 20px;
+        }
+
+        #register-btn:hover {
+            cursor: pointer;
+        }
+
+        #login-btn {
+            margin-top: 20px;
+        }
+
+        #login-btn:hover {
+            cursor: pointer;
+        }
+
+        .auth-page select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--primary);
+            border-radius: 4px;
+            box-sizing: border-box;
+            font: inherit;
         }

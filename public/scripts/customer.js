@@ -8,13 +8,12 @@ const app = {
   },
 
   init() {
-    console.log("Customer page loaded");
     if (!auth.isAuthenticated()) {
     window.location.replace('../index.html');
     return;
   }
-    const customer = auth.getUser();
-    document.querySelector('h1').innerHTML = `Welcome, ${customer.name} | CoffeeScript Caf&eacute;`;
+    const user = auth.getUser();
+    document.querySelector('#welcome-msg').innerHTML = `Welcome, ${user.name}!`;
     this.setupEventListeners();
   },
 

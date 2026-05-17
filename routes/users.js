@@ -1,9 +1,10 @@
 import express from "express";
 import Users from "../models/users.js";
+import { authenticateToken } from "../middleware/auth.js";
 
 export const router = express.Router();
 
-router.get("/", async(req, res) => {
+router.get("/", authenticateToken, async(req, res) => {
     try{
         let users;
         if(req.query.sort !== undefined){
@@ -23,11 +24,10 @@ router.get("/", async(req, res) => {
             const isActive = req.query.active === "true";
             users = users.filter(u => u.active === isActive);
         }
-
         //filter specifically for customers or staff
         if(req.query.type !== undefined) {
-            if(req.query.type === "customer" || req.query.type === "staff") {
-                users = users.filter(u => u.type === req.query.type);
+            if(req.query.type == "customer" || req.query.type == "staff") {
+                users = users.filter(u => u.type.toLowerCase() == req.query.type.toLowerCase());
             }
         }
 
@@ -61,7 +61,7 @@ router.get("/", async(req, res) => {
 });
 
 
-router.post("/", async(req, res) => {
+router.post("/", authenticateToken, async(req, res) => {
     try{
         const user = new Users(req.body);
         await user.save();
@@ -72,7 +72,7 @@ router.post("/", async(req, res) => {
     }
 });
 
-router.put("/:id", async(req, res) => {
+router.put("/:id", authenticateToken, async(req, res) => {
     try{
         const user = await Users.findById(req.params.id);
         if(!user){
@@ -108,7 +108,7 @@ router.put("/:id", async(req, res) => {
     }
 });
 
-router.delete("/:id", async(req, res) => {
+router.delete("/:id", authenticateToken, async(req, res) => {
     try{
         await Users.findByIdAndDelete(req.params.id);
         res.status(204).send();

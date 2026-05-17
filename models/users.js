@@ -1,4 +1,7 @@
 import mongoose from "mongoose";
+import bcrypt from "bcryptjs";
+
+const SALT_WORK_FACTOR = 10;
 
 const userSchema =  new mongoose.Schema({
     email: {
@@ -59,5 +62,22 @@ userSchema.virtual("isCustomer").get(function () {
 userSchema.virtual("isStaff").get(function () {
     return type==="Staff";
 });
+
+
+// Pre-save middleware: hash password before saving
+userSchema.pre("save", async function () {
+  if (!this.isModified("password")) {
+    return;
+  }
+
+  const salt = await bcrypt.genSalt(SALT_WORK_FACTOR);
+  this.password = await bcrypt.hash(this.password, salt);
+});
+
+// Method to compare passwords during login
+userSchema.methods.comparePassword = async function (candidatePassword) {
+  return bcrypt.compare(candidatePassword, this.password);
+};
+
 
 export default mongoose.model("Users", userSchema);

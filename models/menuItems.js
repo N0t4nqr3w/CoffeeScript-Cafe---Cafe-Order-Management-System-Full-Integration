@@ -37,7 +37,7 @@ const menuSchema = new mongoose.Schema({
 });
 
 menuSchema.virtual("priceInDollars").get(function () {
-    return this.price.toLocaleString("en-US", {style:"currency", currency:"USD"});
+    return (this.price/100).toLocaleString("en-US", {style:"currency", currency:"USD"});
 });
 
 export default mongoose.model("MenuItems",menuSchema);

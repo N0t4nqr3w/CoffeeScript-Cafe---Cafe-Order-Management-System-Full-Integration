@@ -9,13 +9,17 @@
 </head>
 <body>
 
-    <header class="cafe-header">
-        <h1>CoffeeScript Café</h1>
-    </header>
+    <header>
+    <div class="cafe-header">
+      <h1>CoffeeScript Caf&eacute;</h1>
+      <button id="return-btn" class="dark-btn btn1">Dashboard</button>
+    </div>
+  </header>
 
     <div class="container">
         
         <main>
+            
             <h2>Menu Options</h2>
             <div class="menu-grid" id="menuGrid"></div>
         </main>
@@ -29,23 +33,15 @@
 
             <div class="cart-total">
                 <span>Total:</span>
-                <span id="totalPrice">$0.00</span>
+                <span id="totalPrice">0</span>
             </div>
-
-            
-            <form action="/orders" method="POST" id="orderForm">
                 
-                <input type="hidden" name="baristaId" value="65f1a2b3c4d5e6f7a8b90123">
-                <input type="hidden" name="createdBy" value="65f2b3c4d5e6f7a8b901234c">
-                <input type="hidden" name="status" value="In Progress">
 
-                <div id="hiddenInputsContainer"></div>
 
-                <button type="submit" class="btn-submit" id="submitBtn">Place Order</button>
-            </form>
-        </aside>
-    </div>
+            <button class="btn-submit" id="submitBtn">Place Order</button>
+        </aside> 
+    </div> 
 
-    <script src="../scripts/api.js"></script>
+    <script src="../scripts/menuDisplay.js" type="module"></script> <!-- some kind of javascript to pull menu item for display-->
 </body>
 </html>

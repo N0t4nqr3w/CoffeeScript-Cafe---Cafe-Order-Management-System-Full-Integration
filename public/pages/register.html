@@ -4,42 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register | CoffeeScript Caf&eacute;</title>
-    <script type="module" src="../scripts/register.js"></script>
+    <script defer type="module" src="../scripts/register.js"></script>
+    <link rel="stylesheet" href="../styles/styles.css">
 </head>
-<body>
+<body class="auth-page">
     <h1>CoffeeScript Caf&eacute;</h1>
-    <h2>Register</h2>
-    <form>
-        <fieldset style="border:none">
-            <label>Email</label>
-            <input type="text" id="email-input">
-        </fieldset>
+    <div class="auth-panel">
+        <h2>Register</h2>
+        <form>
+            <fieldset>
+                <label>Email</label>
+                <input type="text" id="email-input" required>
+            </fieldset>
 
-        <fieldset style="border:none">
-            <label>Password</label>
-            <input type="text" id="password-input">
-        </fieldset>
+            <fieldset>
+                <label>Password</label>
+                <input type="password" id="password-input" minlength="8" required>
+            </fieldset>
 
-        <fieldset style="border:none">
-            <label>Name</label>
-            <input type="text" id="name-input">
-        </fieldset>
+            <fieldset>
+                <label>Name</label>
+                <input type="text" id="name-input" required>
+            </fieldset>
 
-        <fieldset style="border:none">
-            <label>Phone Number</label>
-            <input type="text" id="phone-input">
-        </fieldset>
+            <fieldset>
+                <label>Phone Number</label>
+                <input type="text" id="phone-input" required>
+            </fieldset>
 
-        <fieldset style="border:none">
-            <label>Account Type</label>
-            <select id="select-type">
-                <option>Customer</option>
-                <option>Staff</option>
-            </select>
-        </fieldset>
-        <p id="register-err"></p>
-        <input type="submit" value="Register" id="register-btn">
-        <p>Already have an account? <a href="../index.html">Sign in</a> now!</p>
-    </form>
+            <fieldset>
+                <label>Account Type</label>
+                <select id="select-type">
+                    <option>Customer</option>
+                    <option>Staff</option>
+                </select>
+            </fieldset>
+            <p id="register-err"></p>
+            <input type="submit" value="Register" id="register-btn" class="light-btn">
+            <p>Already have an account? <a href="../index.html">Sign in</a> now!</p>
+        </form>
+    </div>
 </body>
 </html>
