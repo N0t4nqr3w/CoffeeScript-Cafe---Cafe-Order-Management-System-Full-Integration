@@ -14,7 +14,7 @@ This API is designed for a cafe order management system that handles customer in
 #### [Primary Responsibilities]
 - 
 ### Benjamin Li
-#### [Primary Responsibilities]
+#### /pages/orders.html
 - Created an order page that display the menu for the customer can order from and place an order
 ### Andrew Yang
 #### /script/manageOrders
