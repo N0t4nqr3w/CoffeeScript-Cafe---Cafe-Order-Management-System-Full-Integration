@@ -56,5 +56,7 @@ This API is designed for a cafe order management system that handles customer in
 
 ## Server setup (how to start your server)
 1. Clone the Repository
-2. Install Dependencies
-3. 
+2. Ensure you have Node.js installed
+3. Install Dependencies (run `npm install` in the project folder)
+4. Replace .env.example with your own .env file
+5. Finally, run `node main.js` to start the server
