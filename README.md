@@ -31,4 +31,6 @@ This API is designed for a cafe order management system that handles customer in
 - Staff can access a list of customers and edit or remove them
 - Menu page allows users to filter by type of item, and also allows them to search for items by name
 ## Server setup (how to start your server)
-1. 
+1. Clone the Repository
+2. Install Dependencies
+3. 
