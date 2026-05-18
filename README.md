@@ -15,7 +15,7 @@ This API is designed for a cafe order management system that handles customer in
 - 
 ### Benjamin Li
 #### /pages/orders.html
-- Created an order page that display the menu for the customer can order from and place an order
+- Created an order page that display the menus for the customer can order from and place an order in the same page. 
 ### Andrew Yang
 #### /page/manageOrders.html
 - Created a page that will display the dashboard button, filter button, and a list of orders with the cost amount and can be clicked to view more details.
