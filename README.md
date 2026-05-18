@@ -18,7 +18,7 @@ This API is designed for a cafe order management system that handles customer in
 - 
 ### Andrew Yang
 #### /script/manageOrders
-- Created a Staff Orders Management UI mechanics that lets the staff view and manage all orders.
+- Created Staff Orders Management UI mechanics that lets the staff view and manage all orders.
 #### /pages/customer.html
 - Created a page that will have Customer Dashboard UI mechanics that will let the customer interact with viewing menu items, creating orders, viewing orders, and logging out.
 ## List of implemented functionalities.
