@@ -8,6 +8,10 @@ import {router as menuItemsRoutes} from "./routes/menuItems.js";
 import {router as userRoutes} from "./routes/users.js";
 import {router as authRoutes} from "./routes/auth.js";
 
+//for some reason, mongodb stopped connecting and I had to add this
+import { setServers } from "node:dns/promises";
+setServers(["1.1.1.1", "8.8.8.8"]);
+
 //Load config values
 dotenv.config();
 
@@ -18,6 +22,7 @@ async function connectDB() {
         await mongoose.connect(mongoDB);
         console.log("mongoDB connected");
     } catch (err) {
+        console.log(err.message);
         console.error("mongoDB not connected");
         process.exit(1);
     }

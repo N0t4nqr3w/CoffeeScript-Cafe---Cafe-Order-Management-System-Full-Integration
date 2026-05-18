@@ -17,6 +17,9 @@ const options = await api.getMenuItems();
 
 let cart = [];
 
+//a unique identifier for cart items in this session
+let cart_id = 0;
+
 function MenusDisplay() {
     const menuGrid = document.getElementById('menuGrid');
 
@@ -40,9 +43,15 @@ function MenusDisplay() {
 }
 
 function addOrder(id) {
-    const choseItem = options.find(item => item._id === id);
-    if (choseItem) {
-        cart.push(choseItem);
+    const choseItem = options.find(i => i._id === id);
+
+    const item = {
+        cartItem: choseItem,
+        uniqueId: cart_id++
+    };
+
+    if (item) {
+        cart.push(item);
 
     }
     cartUI();
@@ -65,10 +74,25 @@ function cartUI() {
         }
     }
 
+    cartItems.innerHTML='';
+    let subtotal = 0;
+    for(const item of cart) {
+        const order_list_item = document.createElement('div');
+        order_list_item.classList.add('order-list-item');
+        order_list_item.innerHTML=`${item.cartItem.name}`;
 
+        subtotal += item.cartItem.price;
+        
 
-    cartItems.innerHTML = cart.map(item => `<div>${item.name}</div>`).join('');
-    const subtotal = cart.reduce((sum, item) => sum + item.price, 0);
+        order_list_item.addEventListener('click', ()=>{
+            cart = cart.filter(i=>i.uniqueId!==item.uniqueId);
+            cartUI();
+        });
+
+        cartItems.appendChild(order_list_item);
+
+    }
+
     totalPrice.textContent = `${cents_to_dollars(subtotal)}`;
 
 }
@@ -82,10 +106,9 @@ async function place_order() {
     }
     const barista = baristas[Math.floor(Math.random() * baristas.length)];
 
-    const ids = cart.map(item => item._id);
+    const ids = cart.map(item => item.cartItem._id);
 
-    const price =  cart.reduce((sum, item) => sum + item.price, 0);;
-
+    const price =  cart.reduce((sum, item) => sum + item.cartItem.price, 0);;
     const userId = auth.getUser().id;
 
     const data = {
@@ -96,8 +119,9 @@ async function place_order() {
     };
 
     try {
-        await api.createOrder(data);
-        window.location.reload(); //TODO: Show the user some confirmation of their order (Maybe send them to a page where they can view their orders?)
+        const orderId = await api.createOrder(data);
+
+        window.location.href = `../pages/customer.html`;
 
     } catch(err) {
         console.log(err.message);

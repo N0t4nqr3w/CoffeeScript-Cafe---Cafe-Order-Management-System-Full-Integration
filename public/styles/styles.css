@@ -208,7 +208,8 @@
 
         .dashboard-grid {
             display: grid;
-            grid-template-columns: auto auto auto;
+            grid-template-columns: 1fr 1fr;
+            justify-content: space-between;
             gap: 20px;
         }
 
@@ -218,6 +219,7 @@
             border-radius: 8px;
             padding: 30px;
             text-align: left;
+            width: 100%;
 
         }
 
@@ -304,4 +306,35 @@
             border-radius: 4px;
             box-sizing: border-box;
             font: inherit;
+        }
+
+        #order-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+
+            display: grid;
+            gap: 20px;
+        }
+
+
+        .order-toggle {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1rem;
+            cursor: pointer;
+        }   
+
+        .menu-order:hover {
+            background-color: var(--bg);
+        }
+
+        .order-list-item:hover{
+            text-decoration: line-through;
+            cursor: pointer;
         }

@@ -143,7 +143,7 @@ async function add_item_to_list(item) {
             <input type="submit" value="Confirm Edit" class="confirm-btn confirm-edit" id="confirm-edit${item._id}">
         </form>
     </div>
-    `
+    `;
     const item_toggle = item_panel.querySelector(`#toggle${item._id}`);
     const item_details = item_panel.querySelector(`#details${item._id}`);
     item_toggle.addEventListener('click', ()=> {

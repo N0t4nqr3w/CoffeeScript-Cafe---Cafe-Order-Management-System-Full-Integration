@@ -4,20 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Customers | CoffeeScript Caf&eacute;</title>
+    <script type="module" src="../scripts/manageCustomers.js"></script>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/menuItems.css">
 </head>
 <body>
-    <main>
-        <header>
-            <h1>Manage Customers | CoffeeScript Caf&eacute;</h1>
-        </header>
-        <div>
-            <ul id="customerList">
-            </ul>
+    <header>
+        <div class="cafe-header">
+            <h1>CoffeeScript Caf&eacute</h1>
+            <button id="return-btn" class="dark-btn btn1">Dashboard</button>
         </div>
+    </header>
+    <main class="container menu-page">
+        <div class="filter-panel">
+            <input type="text" id="search-input" placeholder="Search for customers...">
+
+            <select id="sort-category">
+                <option value=''>Sort by</option>
+                <option>Name</option>
+                <option>Email</option>
+                <option>Phone</option>
+                <option>Date</option>
+            </select>
+
+            <button id="search-btn" class="btn-add">Search</button>
+        </div>
+
+        <ul id="customers-list"></ul>
     </main>
 </body>
 </html>
-
-<script>
-
-</script>

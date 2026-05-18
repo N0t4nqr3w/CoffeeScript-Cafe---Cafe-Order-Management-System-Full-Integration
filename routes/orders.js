@@ -66,16 +66,17 @@ router.get("/:id", async (req,res)=>{
 
 router.post("/", authenticateToken, async (req,res)=>{
     try{
-        const{itemIds,baristaId,status,createdBy} = req.body;
-
-        const totalCost = await calculatePrice(itemIds);
-  
+        const{itemIds,baristaId,status,createdBy,totalCost} = req.body;
+        const highestOrder = await Order.findOne().sort({orderNum: -1});
+        let orderNum = 1;
+        if(highestOrder) orderNum = highestOrder.orderNum+1;
         const order = new Order({
             baristaId,
             itemIds, 
             totalCost,
             status,
-            createdBy
+            createdBy,
+            orderNum
         });
         
         await order.save();
@@ -112,6 +113,10 @@ router.put("/:id", authenticateToken, async (req,res)=>{
 
         if(req.body.createdBy !== undefined) {
             orderUpdate.createdBy = req.body.createdBy;
+        }
+
+        if(req.body.orderNum !== undefined) {
+            orderUpdate.orderNum = req.body.orderNum;
         }
 
         await orderUpdate.save();

@@ -6,7 +6,9 @@
     <title>Dashboard | CoffeeScript Caf&eacute;</title>
     <script type="module" src="../scripts/staff.js"></script>
     <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/menuItems.css">
 </head>
+
 <body>
   <header>
     <div class="cafe-header">
@@ -24,14 +26,16 @@
             <h2>Update Menu</h2>
             <p>View, edit, add, and delete menu items.</p>
         </button>
-        <button id = "mngOrdersBtn" class="dashboard-card">
-            <h2>Manage Orders</h2>
-            <p>View orders assigned to you and update their status.</p>
-        </button>
         <button id = "mngCustBtn" class="dashboard-card">
             <h2>Manage Customer Accounts</h2>
             <p>View, edit, and delete customer accounts.</p>
         </button>
+    </div>
+
+    <div class="orders-container">
+      <h2>Assigned Orders</h2>
+      <p id="no-order"></p>
+      <ul id="order-list"></ul>
     </div>
   </main>
 </body>

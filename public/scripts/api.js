@@ -77,9 +77,9 @@ export const api = {
       headers: authHeaders(),
     }),
 
-    // Users 
-  getUsers: () =>
-    fetchJSON(`${API_URL}/user`, {
+    // Users
+  getUsers: (query = '') =>
+    fetchJSON(`${API_URL}/user${query}`, {
       headers: authHeaders(),
     }),
 
@@ -116,10 +116,8 @@ export const api = {
     headers: {'Content-Type': 'application/json', ...authHeaders()},
     body: JSON.stringify(orderData),
   }),
-  
- // NEW***
-  getOrders: () => 
-    fetchJSON(`${API_URL}/orders`, {
+  getOrders: (query = '') => 
+    fetchJSON(`${API_URL}/orders${query}`, {
       headers: authHeaders(),
     }),
   
@@ -138,5 +136,4 @@ export const api = {
       method: 'DELETE',
       headers: authHeaders(),
   }),
-  
 };

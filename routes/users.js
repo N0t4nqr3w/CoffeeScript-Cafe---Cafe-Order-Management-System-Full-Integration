@@ -7,18 +7,28 @@ export const router = express.Router();
 router.get("/", authenticateToken, async(req, res) => {
     try{
         let users;
-        if(req.query.sort !== undefined){
-            if(req.query.sort === "name"){
-                users = await Users.find().sort("name");
-            }
-            else if(req.query.sort === "date") {
-                users = await Users.find().sort("hiredDate");
-            } else {
-                users = await Users.find();
-            }
+        if(req.query.search){
+            //Uses %regex to search for a user that has a name matching what is in the query(case insensitive)
+            users = await Users.find({
+                "name" : {$regex: req.query.search, $options: "i"}
+            });
         } else {
             users = await Users.find();
         }
+
+
+
+        if(req.query.sort !== undefined && req.query.sort !== "sort by"){ 
+            if(req.query.sort === "name"){ 
+                users.sort((a, b) => (a.name || '').localeCompare(b.name || '')); 
+            } else if(req.query.sort === "date") { 
+                users.sort((a, b) => new Date(a.createdDate || 0) - new Date(b.createdDate || 0)); 
+            } else if(req.query.sort === "email") { 
+                users.sort((a, b) => (a.email || '').localeCompare(b.email || '')); 
+            } else if(req.query.sort === "phone") { 
+                users.sort((a, b) => (a.phone || '').localeCompare(b.phone || '')); 
+            } 
+        } 
         
         if(req.query.active !== undefined){
             const isActive = req.query.active === "true";
@@ -35,7 +45,7 @@ router.get("/", authenticateToken, async(req, res) => {
         if(req.query.limit !== undefined) {
              limit = parseInt(req.query.limit);
              if (isNaN(limit) || limit < 1) {
-                return result.status(400).json({error:"Limit must be a positive integer"});
+                return res.status(400).json({error:"Limit must be a positive integer"});
             }
         }
 
@@ -43,7 +53,7 @@ router.get("/", authenticateToken, async(req, res) => {
         if(req.query.page !== undefined) {
              page = parseInt(req.query.page);
              if (isNaN(page) || page < 1) {
-                return result.status(400).json({error:"Page must be a positive integer"});
+                return res.status(400).json({error:"Page must be a positive integer"});
             }
         }
 

@@ -29,6 +29,11 @@ const orderSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Users",
         required: true
+    },
+
+    orderNum: {
+        type: Number,
+        required: true
     }
 });
 
