@@ -17,6 +17,8 @@ This API is designed for a cafe order management system that handles customer in
 #### Menu Item Management
 - Created /pages/menu.html to handle all CRUD operations for menu items.
 - The page automatically updates depending on whether a customer or a staff member is logged in.
+#### Page Styling
+- Working off Benjamin's page style, created the css style for the rest of the pages.
 
 ### Carson Logelin
 #### /pages/staff.html
